@@ -78,7 +78,7 @@ fun AttendanceScreen(
             },
             text = {
                 Text(
-                    "He is marked absent for $dayLabel. WhatsApp opens with the message " +
+                    "Marked absent for $dayLabel. WhatsApp opens with the message " +
                         "written — you still press send.",
                     style = MaterialTheme.typography.bodyLarge,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,

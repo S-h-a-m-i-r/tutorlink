@@ -13,23 +13,36 @@ import pk.groscale.feeregister.notify.ReminderSync
 import pk.groscale.feeregister.util.safely
 import pk.groscale.feeregister.data.repo.BackupRepository
 import pk.groscale.feeregister.data.repo.FeeRepository
+import pk.groscale.feeregister.ui.components.Reveal
 import pk.groscale.feeregister.ui.nav.AppNav
 import pk.groscale.feeregister.ui.theme.TutorLinkTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         // A short fade rather than the system's cut. The splash ground is the same
-        // tint as the home header, so the splash melts into the app. It waits for
-        // the quill's dip to finish (at most its 800ms) - the app is usually ready
-        // sooner, and cutting the gesture halfway looks like a glitch. Below API 31
-        // there is no icon animation and the remaining time is zero.
+        // tint as the home header, so the splash melts into the app. It lingers at
+        // most 250ms for the quill's dip once the app is ready - the dip keeps
+        // moving through the fade, so nothing jumps - and opens Reveal as the fade
+        // starts, so the app's entrance plays in step with it rather than hidden
+        // underneath. Below API 31 there is no icon animation and no wait.
         installSplashScreen().setOnExitAnimationListener { splash ->
             val iconEndsAt = splash.iconAnimationStartMillis + splash.iconAnimationDurationMillis
-            val wait = (iconEndsAt - SystemClock.uptimeMillis()).coerceIn(0L, 800L)
+            val wait = (iconEndsAt - SystemClock.uptimeMillis()).coerceIn(0L, 250L)
+            // On API 31+ the animated icon lives on its own surface, which ignores
+            // the parent's alpha: without this it stays solid over the app and then
+            // vanishes in one frame.
+            splash.iconView.animate()
+                .alpha(0f)
+                .scaleX(0.92f)
+                .scaleY(0.92f)
+                .setStartDelay(wait)
+                .setDuration(200L)
+                .start()
             splash.view.animate()
                 .alpha(0f)
                 .setStartDelay(wait)
-                .setDuration(220L)
+                .setDuration(200L)
+                .withStartAction { Reveal.markShown() }
                 .withEndAction { splash.remove() }
                 .start()
         }

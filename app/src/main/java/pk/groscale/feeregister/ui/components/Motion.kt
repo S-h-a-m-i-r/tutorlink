@@ -24,6 +24,9 @@ import androidx.compose.ui.graphics.StrokeJoin
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.unit.dp
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.withTimeoutOrNull
 
 /**
  * The app's whole motion vocabulary. Three durations and one easing, so nothing
@@ -38,6 +41,26 @@ object Motion {
     const val MEDIUM = 450
     const val LONG = 700
     val Easing = FastOutSlowInEasing
+}
+
+/**
+ * Opens once the splash starts to fade, so entrance motion (the welcome card,
+ * the collection bar's first fill) plays where it can be seen rather than
+ * underneath the splash.
+ *
+ * A launch without a splash never opens it, hence the timeout in [await]: at
+ * worst the entrance starts a moment late, never not at all.
+ */
+object Reveal {
+    private val open = MutableStateFlow(false)
+
+    fun markShown() {
+        open.value = true
+    }
+
+    suspend fun await(timeoutMs: Long = 700L) {
+        withTimeoutOrNull(timeoutMs) { open.first { it } }
+    }
 }
 
 /**

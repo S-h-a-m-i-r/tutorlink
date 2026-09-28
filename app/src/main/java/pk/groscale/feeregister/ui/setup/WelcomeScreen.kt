@@ -30,6 +30,7 @@ import pk.groscale.feeregister.domain.formatRs
 import pk.groscale.feeregister.ui.theme.Money
 import pk.groscale.feeregister.ui.theme.Radius
 import pk.groscale.feeregister.ui.components.Motion
+import pk.groscale.feeregister.ui.components.Reveal
 import pk.groscale.feeregister.ui.components.pressScale
 import pk.groscale.feeregister.ui.components.throttledClickable
 import pk.groscale.feeregister.ui.theme.Space
@@ -53,8 +54,14 @@ fun WelcomeScreen(onGetStarted: () -> Unit, onRestore: () -> Unit) {
     // arrive. Everything is in place in well under a second.
     val card = remember { Animatable(0f) }
     val words = remember { Animatable(0f) }
-    LaunchedEffect(Unit) { card.animateTo(1f, tween(Motion.LONG, easing = Motion.Easing)) }
-    LaunchedEffect(Unit) { words.animateTo(1f, tween(Motion.MEDIUM, delayMillis = 250, easing = Motion.Easing)) }
+    LaunchedEffect(Unit) {
+        Reveal.await()
+        card.animateTo(1f, tween(Motion.LONG, easing = Motion.Easing))
+    }
+    LaunchedEffect(Unit) {
+        Reveal.await()
+        words.animateTo(1f, tween(Motion.MEDIUM, delayMillis = 250, easing = Motion.Easing))
+    }
     val getStarted = remember { MutableInteractionSource() }
 
     Column(

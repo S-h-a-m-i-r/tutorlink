@@ -38,7 +38,10 @@ import pk.groscale.feeregister.ui.theme.Space
 fun CollectionBar(received: Int, expected: Int, modifier: Modifier = Modifier) {
     val fraction = if (expected <= 0) 0f else (received.toFloat() / expected).coerceIn(0f, 1f)
     val shown = remember { Animatable(0f) }
-    LaunchedEffect(fraction) { shown.animateTo(fraction, tween(Motion.LONG, easing = Motion.Easing)) }
+    LaunchedEffect(fraction) {
+        Reveal.await()
+        shown.animateTo(fraction, tween(Motion.LONG, easing = Motion.Easing))
+    }
     val percent = (shown.value * 100).roundToInt()
 
     Column(modifier = modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(Space.sm)) {

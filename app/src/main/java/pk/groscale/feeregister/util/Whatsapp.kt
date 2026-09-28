@@ -45,11 +45,14 @@ object Messages {
      * to say why, and a teacher who hears back the same evening is the reason
      * this is worth sending at all. Nothing about fees appears here - an absence
      * never changes what is owed, and mixing the two makes it read as a threat.
+     *
+     * Worded around "ghair haazri" so it is correct for a son or a daughter: the
+     * app does not know which, and "nahi aaya" to a girl's parent reads as careless.
      */
     fun absenceNotice(studentName: String, dateLabel: String, tuitionName: String): String =
         buildString {
             append("Assalam o Alaikum. ")
-            append("$studentName aaj ($dateLabel) class mein nahi aaya. ")
+            append("$studentName ki $dateLabel ko class mein ghair haazri thi. ")
             append("Agar koi masla hai to bata dein. Shukriya.")
             if (tuitionName.isNotBlank()) append("\n— $tuitionName")
         }

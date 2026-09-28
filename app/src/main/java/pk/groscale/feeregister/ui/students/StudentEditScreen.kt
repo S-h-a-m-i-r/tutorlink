@@ -57,8 +57,8 @@ fun StudentEditScreen(
             text = {
                 Column(verticalArrangement = Arrangement.spacedBy(Space.lg)) {
                     Text(
-                        "He stops appearing in this month's list and no new bills are made. " +
-                            "His past bills and payments are kept.",
+                        "The student stops appearing in this month's list and no new bills are made. " +
+                            "Past bills and payments are kept.",
                         style = MaterialTheme.typography.bodyLarge,
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
                     )
@@ -174,14 +174,14 @@ private fun LeavingSummary(settlement: Settlement) {
         }
         when {
             settlement.duesToCollect > 0 -> Text(
-                "${formatRs(settlement.duesToCollect)} still to collect from him.",
+                "${formatRs(settlement.duesToCollect)} still to collect from the parent.",
                 style = MaterialTheme.typography.bodyLarge,
                 color = status.pending,
             )
 
             settlement.toGiveBack > 0 -> Column(verticalArrangement = Arrangement.spacedBy(Space.xs)) {
                 Text(
-                    "${formatRs(settlement.toGiveBack)} to give back to him.",
+                    "${formatRs(settlement.toGiveBack)} to give back to the parent.",
                     style = MaterialTheme.typography.bodyLarge,
                     color = status.paid,
                 )

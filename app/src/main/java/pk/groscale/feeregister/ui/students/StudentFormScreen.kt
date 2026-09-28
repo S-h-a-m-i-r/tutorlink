@@ -218,7 +218,7 @@ private fun JoiningCyclePicker(
             color = MaterialTheme.colorScheme.onSurface,
         )
         Text(
-            "He joins on ${joiningOn.format(DayMonth)}, so the first bill is not a whole " +
+            "Joining on ${joiningOn.format(DayMonth)} means the first bill is not a whole " +
                 "month. Ask the parent which one suits them — the teacher is owed the same " +
                 "either way.",
             style = MaterialTheme.typography.bodySmall,

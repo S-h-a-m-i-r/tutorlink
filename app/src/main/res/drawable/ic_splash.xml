@@ -45,38 +45,37 @@
         </vector>
     </aapt:attr>
 
-    <!-- 100ms still, 320ms down, 380ms up: 800ms, matching the theme's duration. -->
+    <!-- 260ms down, 340ms up: 600ms, matching the theme's duration. Short on
+         purpose: the splash only stays while the app loads. -->
     <target android:name="quill">
         <aapt:attr name="android:animation">
             <set android:ordering="sequentially">
                 <set>
                     <objectAnimator
-                        android:duration="320"
+                        android:duration="260"
                         android:interpolator="@android:interpolator/fast_out_slow_in"
                         android:propertyName="translateY"
-                        android:startOffset="100"
                         android:valueFrom="0"
                         android:valueTo="4"
                         android:valueType="floatType" />
                     <objectAnimator
-                        android:duration="320"
+                        android:duration="260"
                         android:interpolator="@android:interpolator/fast_out_slow_in"
                         android:propertyName="rotation"
-                        android:startOffset="100"
                         android:valueFrom="0"
                         android:valueTo="-6"
                         android:valueType="floatType" />
                 </set>
                 <set>
                     <objectAnimator
-                        android:duration="380"
+                        android:duration="340"
                         android:interpolator="@android:interpolator/fast_out_slow_in"
                         android:propertyName="translateY"
                         android:valueFrom="4"
                         android:valueTo="0"
                         android:valueType="floatType" />
                     <objectAnimator
-                        android:duration="380"
+                        android:duration="340"
                         android:interpolator="@android:interpolator/fast_out_slow_in"
                         android:propertyName="rotation"
                         android:valueFrom="-6"
