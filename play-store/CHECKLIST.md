@@ -17,7 +17,7 @@ you can do in Play Console.
 | No internet permission, no ads, no analytics SDKs | ✅ |
 | Release build shrunk with R8 (1.6 MB APK instead of 20 MB) | ✅ |
 | 82 unit tests pass; 3,000-event monkey test on release: 0 crashes | ✅ |
-| Privacy policy text | ✅ `privacy-policy.html` — fill in 4 placeholders, then host it |
+| Privacy policy + website | ✅ `docs/` on GitHub Pages — fill in name and email (Step 3) |
 | Store listing text, icon, feature graphic, 5 screenshots | ✅ `listing.md` + images |
 
 To rebuild after any change:
@@ -79,13 +79,20 @@ Also check:
 Play requires a public privacy policy URL for **every** app, even ones that
 collect nothing.
 
-1. Open `privacy-policy.html` and replace the placeholders: `[DATE YOU PUBLISH]`,
-   `[YOUR NAME AS SHOWN ON GOOGLE PLAY]`, and `[YOUR-EMAIL]` (it appears twice,
-   in the link and its text).
-2. Host it somewhere public — not a PDF, not a Google Doc that needs sign-in:
-   - **Google Sites** (easiest): new site → paste the text → Publish.
-   - or **GitHub Pages**, or your own domain.
-3. Open the URL in a private browser window to check it loads without login.
+The site lives in `docs/` and is served by GitHub Pages from the public repo:
+
+- Website: <https://s-h-a-m-i-r.github.io/tutorlink/>
+- **Privacy policy (paste this into Play Console):**
+  <https://s-h-a-m-i-r.github.io/tutorlink/privacy/>
+
+1. Replace `[DEVELOPER NAME]` and `[CONTACT EMAIL]` in `docs/index.html` and
+   `docs/privacy/index.html`, then commit and push. The name must match the
+   developer name on Play; the email should match your Play contact email.
+2. One-time setup: GitHub → repo **Settings → Pages** → Source: *Deploy from a
+   branch* → Branch `main`, folder `/docs` → Save. The site is live a minute later.
+3. Open the privacy URL in a private browser window to check it loads without login.
+4. The repo must stay **public** — making it private again takes the policy page
+   down, and Play can suspend an app whose policy link is broken.
 
 ## Step 4 — Create the app
 

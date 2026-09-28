@@ -147,8 +147,11 @@ replaced by `play-store/`:
 
 - `CHECKLIST.md` — every Play Console step and form answer, in order
 - `listing.md` — title, short and full description, store settings
-- `privacy-policy.html` — fill the placeholders, then host it publicly
 - `icon-512.png`, `feature-graphic-1024x500.png`, `screenshots/`
+
+The website and privacy policy are in `docs/`, served by GitHub Pages at
+<https://s-h-a-m-i-r.github.io/tutorlink/> (policy: `/privacy/`). Play Console
+links to that policy URL, so the repo has to stay public.
 
 Release builds are signed with the upload key in `upload-keystore.jks`, read
 through `keystore.properties` at the project root. Both are git-ignored and must
