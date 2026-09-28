@@ -78,8 +78,10 @@ Play Console → Grow users → Store presence → **Store settings**.
 | App or game | App |
 | Category | Business (Productivity also fits) |
 | Tags | Pick up to 5 closest to: Business, Productivity, Education, Finance tracker |
-| Email | your support email (shown publicly) |
-| Phone / website | optional — leave blank if you like |
+| Email | `shamiriqbal.bis@gmail.com` (shown publicly; same as the privacy policy) |
+| Website | `https://s-h-a-m-i-r.github.io/tutorlink/` |
+| Phone | optional — leave blank |
+| Privacy policy (App content) | `https://s-h-a-m-i-r.github.io/tutorlink/privacy/` |
 
 ## Release notes for the first release
 

@@ -17,7 +17,7 @@ you can do in Play Console.
 | No internet permission, no ads, no analytics SDKs | ✅ |
 | Release build shrunk with R8 (1.6 MB APK instead of 20 MB) | ✅ |
 | 82 unit tests pass; 3,000-event monkey test on release: 0 crashes | ✅ |
-| Privacy policy + website | ✅ `docs/` on GitHub Pages — fill in name and email (Step 3) |
+| Privacy policy + website | ✅ live on GitHub Pages from `docs/` (Step 3) |
 | Store listing text, icon, feature graphic, 5 screenshots | ✅ `listing.md` + images |
 
 To rebuild after any change:
@@ -85,13 +85,13 @@ The site lives in `docs/` and is served by GitHub Pages from the public repo:
 - **Privacy policy (paste this into Play Console):**
   <https://s-h-a-m-i-r.github.io/tutorlink/privacy/>
 
-1. Replace `[DEVELOPER NAME]` and `[CONTACT EMAIL]` in `docs/index.html` and
-   `docs/privacy/index.html`, then commit and push. The name must match the
-   developer name on Play; the email should match your Play contact email.
-2. One-time setup: GitHub → repo **Settings → Pages** → Source: *Deploy from a
-   branch* → Branch `main`, folder `/docs` → Save. The site is live a minute later.
-3. Open the privacy URL in a private browser window to check it loads without login.
-4. The repo must stay **public** — making it private again takes the policy page
+✅ Live, with developer **Downforce Labs** and contact
+**shamiriqbal.bis@gmail.com**. Use exactly that developer name on your Play
+account and that email as the Play contact email, so the policy matches the
+listing. If either ever changes, edit both files in `docs/` and push.
+
+GitHub Pages is set to *Deploy from a branch* → `main` / `/docs`.
+The repo must stay **public** — making it private again takes the policy page
    down, and Play can suspend an app whose policy link is broken.
 
 ## Step 4 — Create the app
