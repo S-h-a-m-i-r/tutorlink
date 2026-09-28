@@ -6,31 +6,26 @@
     android:viewportHeight="108">
 
     <!--
-      Rising bars: collection going up. Name-independent, so it survives the
-      rename, and it holds together at 48px.
+      An inkpot with a quill: the app's name, drawn. Name-independent of any
+      one feature, so it survives the app growing past fees.
 
-      Adaptive icons are masked to a ~72dp circle inside a 108dp canvas, so all
-      content sits inside 21..87 and within 36 of the centre (54,54). These bars
-      span x 25..83 and y 31..77.
+      Adaptive icons are masked to a ~72dp circle inside a 108dp canvas, so every
+      point sits within 33 of the centre (54,54): the quill tip is at 32.2, the
+      pot's lower corners at 30.
 
-      Each bar is one line with strokeWidth 12 and a round cap - a stadium shape
-      for a fraction of the path data of a rounded rect.
+      The quill is drawn first so the pot covers its base: it reads as standing
+      in the ink. The spine is the only non-white stroke; in a monochrome
+      (themed) icon it simply merges into the feather.
     -->
     <path
-        android:pathData="M31,65 L31,71"
-        android:strokeColor="#FFFFFF"
-        android:strokeAlpha="0.55"
-        android:strokeWidth="12"
+        android:fillColor="#FFFFFF"
+        android:pathData="M53,48 Q51.5,30 70,25 Q69.5,42.5 53,48 Z" />
+    <path
+        android:pathData="M55.5,45 L68.5,27.5"
+        android:strokeColor="#2C7383"
+        android:strokeWidth="1.8"
         android:strokeLineCap="round" />
     <path
-        android:pathData="M54,53 L54,71"
-        android:strokeColor="#FFFFFF"
-        android:strokeAlpha="0.78"
-        android:strokeWidth="12"
-        android:strokeLineCap="round" />
-    <path
-        android:pathData="M77,37 L77,71"
-        android:strokeColor="#FFFFFF"
-        android:strokeWidth="12"
-        android:strokeLineCap="round" />
+        android:fillColor="#FFFFFF"
+        android:pathData="M44.5,44 H63.5 A2.5,2.5 0 0 1 66,46.5 V50 H62 V54 H66 A10,10 0 0 1 76,64 V70 A10,10 0 0 1 66,80 H42 A10,10 0 0 1 32,70 V64 A10,10 0 0 1 42,54 H46 V50 H42 V46.5 A2.5,2.5 0 0 1 44.5,44 Z" />
 </vector>

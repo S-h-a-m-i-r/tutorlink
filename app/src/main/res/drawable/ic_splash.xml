@@ -1,37 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
-<vector xmlns:android="http://schemas.android.com/apk/res/android"
-    android:width="108dp"
-    android:height="108dp"
-    android:viewportWidth="108"
-    android:viewportHeight="108">
+<animated-vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt">
 
     <!--
+      The launcher mark on its teal disc, with one gesture: the quill dips into
+      the ink and lifts out again. Under a second, once, then the app.
+
       Self-contained: the teal disc is part of the drawable rather than relying on
-      windowSplashScreenIconBackgroundColor, which did not apply and left white
-      bars invisible on the pale splash ground.
+      windowSplashScreenIconBackgroundColor, which did not apply and left a white
+      mark invisible on the pale splash ground. A plain vector passed to
+      windowSplashScreenAnimatedIcon is NOT circle-masked by the system (only
+      AdaptiveIconDrawables are), so the disc has to be drawn.
 
-      A plain vector passed to windowSplashScreenAnimatedIcon is NOT circle-masked
-      by the system (only AdaptiveIconDrawables are), so the disc has to be drawn.
+      Below API 31 the compat splash shows this drawable still, which is the
+      resting mark - nothing to fall back to.
     -->
-    <path
-        android:pathData="M54,4a50,50 0 1,0 0.1,0z"
-        android:fillColor="#2C7383" />
+    <aapt:attr name="android:drawable">
+        <vector
+            android:width="108dp"
+            android:height="108dp"
+            android:viewportWidth="108"
+            android:viewportHeight="108">
+            <path
+                android:fillColor="#2C7383"
+                android:pathData="M54,4a50,50 0 1,0 0.1,0z" />
+            <!-- Pivots at the quill's base so it tilts from the pot's mouth. -->
+            <group
+                android:name="quill"
+                android:pivotX="53"
+                android:pivotY="48">
+                <path
+                    android:fillColor="#FFFFFF"
+                    android:pathData="M53,48 Q51.5,30 70,25 Q69.5,42.5 53,48 Z" />
+                <path
+                    android:pathData="M55.5,45 L68.5,27.5"
+                    android:strokeColor="#2C7383"
+                    android:strokeWidth="1.8"
+                    android:strokeLineCap="round" />
+            </group>
+            <!-- Drawn after the quill, so the dip disappears into the pot. -->
+            <path
+                android:fillColor="#FFFFFF"
+                android:pathData="M44.5,44 H63.5 A2.5,2.5 0 0 1 66,46.5 V50 H62 V54 H66 A10,10 0 0 1 76,64 V70 A10,10 0 0 1 66,80 H42 A10,10 0 0 1 32,70 V64 A10,10 0 0 1 42,54 H46 V50 H42 V46.5 A2.5,2.5 0 0 1 44.5,44 Z" />
+        </vector>
+    </aapt:attr>
 
-    <path
-        android:pathData="M31,65 L31,71"
-        android:strokeColor="#FFFFFF"
-        android:strokeAlpha="0.55"
-        android:strokeWidth="12"
-        android:strokeLineCap="round" />
-    <path
-        android:pathData="M54,53 L54,71"
-        android:strokeColor="#FFFFFF"
-        android:strokeAlpha="0.78"
-        android:strokeWidth="12"
-        android:strokeLineCap="round" />
-    <path
-        android:pathData="M77,37 L77,71"
-        android:strokeColor="#FFFFFF"
-        android:strokeWidth="12"
-        android:strokeLineCap="round" />
-</vector>
+    <!-- 100ms still, 320ms down, 380ms up: 800ms, matching the theme's duration. -->
+    <target android:name="quill">
+        <aapt:attr name="android:animation">
+            <set android:ordering="sequentially">
+                <set>
+                    <objectAnimator
+                        android:duration="320"
+                        android:interpolator="@android:interpolator/fast_out_slow_in"
+                        android:propertyName="translateY"
+                        android:startOffset="100"
+                        android:valueFrom="0"
+                        android:valueTo="4"
+                        android:valueType="floatType" />
+                    <objectAnimator
+                        android:duration="320"
+                        android:interpolator="@android:interpolator/fast_out_slow_in"
+                        android:propertyName="rotation"
+                        android:startOffset="100"
+                        android:valueFrom="0"
+                        android:valueTo="-6"
+                        android:valueType="floatType" />
+                </set>
+                <set>
+                    <objectAnimator
+                        android:duration="380"
+                        android:interpolator="@android:interpolator/fast_out_slow_in"
+                        android:propertyName="translateY"
+                        android:valueFrom="4"
+                        android:valueTo="0"
+                        android:valueType="floatType" />
+                    <objectAnimator
+                        android:duration="380"
+                        android:interpolator="@android:interpolator/fast_out_slow_in"
+                        android:propertyName="rotation"
+                        android:valueFrom="-6"
+                        android:valueTo="0"
+                        android:valueType="floatType" />
+                </set>
+            </set>
+        </aapt:attr>
+    </target>
+</animated-vector>

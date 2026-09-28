@@ -1,5 +1,6 @@
 package pk.groscale.feeregister.ui.components
 
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -13,6 +14,7 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
@@ -76,10 +78,12 @@ fun AppTextField(
 @Composable
 fun PrimaryButton(text: String, onClick: () -> Unit, modifier: Modifier = Modifier, enabled: Boolean = true) {
     val guarded = rememberThrottled(action = onClick)
+    val interaction = remember { MutableInteractionSource() }
     Button(
         onClick = guarded,
         enabled = enabled,
-        modifier = modifier.fillMaxWidth().height(TapTarget),
+        interactionSource = interaction,
+        modifier = modifier.fillMaxWidth().height(TapTarget).pressScale(interaction),
         shape = RoundedCornerShape(Radius.pill),
         colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.primary),
     ) { Text(text, style = MaterialTheme.typography.labelLarge) }
@@ -88,9 +92,11 @@ fun PrimaryButton(text: String, onClick: () -> Unit, modifier: Modifier = Modifi
 @Composable
 fun SecondaryButton(text: String, onClick: () -> Unit, modifier: Modifier = Modifier) {
     val guarded = rememberThrottled(action = onClick)
+    val interaction = remember { MutableInteractionSource() }
     OutlinedButton(
         onClick = guarded,
-        modifier = modifier.fillMaxWidth().height(TapTarget),
+        interactionSource = interaction,
+        modifier = modifier.fillMaxWidth().height(TapTarget).pressScale(interaction),
         shape = RoundedCornerShape(Radius.pill),
     ) { Text(text, style = MaterialTheme.typography.labelLarge, color = MaterialTheme.colorScheme.primary) }
 }

@@ -1,6 +1,9 @@
 package pk.groscale.feeregister.ui.setup
 
+import androidx.compose.animation.core.Animatable
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -15,15 +18,19 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import pk.groscale.feeregister.domain.formatRs
 import pk.groscale.feeregister.ui.theme.Money
 import pk.groscale.feeregister.ui.theme.Radius
+import pk.groscale.feeregister.ui.components.Motion
+import pk.groscale.feeregister.ui.components.pressScale
 import pk.groscale.feeregister.ui.components.throttledClickable
 import pk.groscale.feeregister.ui.theme.Space
 import pk.groscale.feeregister.ui.theme.TapTarget
@@ -42,6 +49,14 @@ import pk.groscale.feeregister.ui.theme.TutorLinkTheme
  */
 @Composable
 fun WelcomeScreen(onGetStarted: () -> Unit, onRestore: () -> Unit) {
+    // One entrance, once: the card is set down on the desk, then the words
+    // arrive. Everything is in place in well under a second.
+    val card = remember { Animatable(0f) }
+    val words = remember { Animatable(0f) }
+    LaunchedEffect(Unit) { card.animateTo(1f, tween(Motion.LONG, easing = Motion.Easing)) }
+    LaunchedEffect(Unit) { words.animateTo(1f, tween(Motion.MEDIUM, delayMillis = 250, easing = Motion.Easing)) }
+    val getStarted = remember { MutableInteractionSource() }
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -57,7 +72,11 @@ fun WelcomeScreen(onGetStarted: () -> Unit, onRestore: () -> Unit) {
         Column(
             modifier = Modifier
                 .fillMaxWidth(0.86f)
-                .rotate(-2.5f)
+                .graphicsLayer {
+                    alpha = card.value
+                    translationY = (1f - card.value) * 24.dp.toPx()
+                    rotationZ = -2.5f - (1f - card.value) * 3f
+                }
                 .background(Color.White, RoundedCornerShape(Radius.card))
                 .padding(Space.screen),
             verticalArrangement = Arrangement.spacedBy(Space.xs),
@@ -69,23 +88,31 @@ fun WelcomeScreen(onGetStarted: () -> Unit, onRestore: () -> Unit) {
 
         Spacer(Modifier.height(Space.xxxl))
 
-        Text(
-            "Know who has paid.\nAlways.",
-            style = MaterialTheme.typography.headlineLarge,
-            color = Color.White,
-        )
-        Spacer(Modifier.height(Space.md))
-        Text(
-            "Your tuition fee register — on your phone.",
-            style = MaterialTheme.typography.bodyLarge,
-            color = Teal100,
-        )
+        Column(
+            modifier = Modifier.graphicsLayer {
+                alpha = words.value
+                translationY = (1f - words.value) * 12.dp.toPx()
+            },
+        ) {
+            Text(
+                "Know who has paid.\nAlways.",
+                style = MaterialTheme.typography.headlineLarge,
+                color = Color.White,
+            )
+            Spacer(Modifier.height(Space.md))
+            Text(
+                "Your tuition fee register — on your phone.",
+                style = MaterialTheme.typography.bodyLarge,
+                color = Teal100,
+            )
+        }
 
         Spacer(Modifier.weight(1f))
 
         Button(
             onClick = onGetStarted,
-            modifier = Modifier.fillMaxWidth().height(TapTarget),
+            interactionSource = getStarted,
+            modifier = Modifier.fillMaxWidth().height(TapTarget).pressScale(getStarted),
             shape = RoundedCornerShape(Radius.pill),
             colors = ButtonDefaults.buttonColors(containerColor = Color.White, contentColor = Teal700),
         ) { Text("Get started", style = MaterialTheme.typography.labelLarge) }

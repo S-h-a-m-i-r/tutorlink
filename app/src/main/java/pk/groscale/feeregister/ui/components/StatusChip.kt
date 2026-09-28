@@ -1,11 +1,14 @@
 package pk.groscale.feeregister.ui.components
 
+import androidx.compose.animation.animateColorAsState
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
@@ -33,12 +36,15 @@ fun StatusChip(status: FeeStatus, monthsDue: Int = 0, modifier: Modifier = Modif
             if (monthsDue > 1) "$monthsDue months due" else "1 month due",
         )
     }
+    // Colours cross-fade, so Not paid -> Paid is a change he notices, not a flicker.
+    val shownBg by animateColorAsState(bg, tween(Motion.SHORT), label = "chipBg")
+    val shownFg by animateColorAsState(fg, tween(Motion.SHORT), label = "chipFg")
     Text(
         text = label,
         style = MaterialTheme.typography.bodySmall,
-        color = fg,
+        color = shownFg,
         modifier = modifier
-            .background(bg, RoundedCornerShape(Radius.pill))
+            .background(shownBg, RoundedCornerShape(Radius.pill))
             .padding(horizontal = 10.dp, vertical = 4.dp),
     )
 }
@@ -51,15 +57,22 @@ fun StatusChip(status: FeeStatus, monthsDue: Int = 0, modifier: Modifier = Modif
 fun StatusChipLike(text: String, emphasised: Boolean, modifier: Modifier = Modifier) {
     val scheme = MaterialTheme.colorScheme
     val c = LocalStatusColors.current
+    val bg by animateColorAsState(
+        if (emphasised) c.pendingContainer else scheme.surfaceVariant,
+        tween(Motion.SHORT),
+        label = "chipLikeBg",
+    )
+    val fg by animateColorAsState(
+        if (emphasised) c.onPendingContainer else scheme.onSurfaceVariant,
+        tween(Motion.SHORT),
+        label = "chipLikeFg",
+    )
     Text(
         text = text,
         style = MaterialTheme.typography.bodySmall,
-        color = if (emphasised) c.onPendingContainer else scheme.onSurfaceVariant,
+        color = fg,
         modifier = modifier
-            .background(
-                if (emphasised) c.pendingContainer else scheme.surfaceVariant,
-                RoundedCornerShape(Radius.pill),
-            )
+            .background(bg, RoundedCornerShape(Radius.pill))
             .padding(horizontal = 10.dp, vertical = 4.dp),
     )
 }

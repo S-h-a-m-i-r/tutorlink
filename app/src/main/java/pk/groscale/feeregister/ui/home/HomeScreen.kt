@@ -1,5 +1,7 @@
 package pk.groscale.feeregister.ui.home
 
+import androidx.compose.animation.core.animateIntAsState
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -40,7 +42,9 @@ import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.withContext
 import pk.groscale.feeregister.domain.formatRs
 import pk.groscale.feeregister.ui.components.CollectionBar
+import pk.groscale.feeregister.ui.components.DrawnTick
 import pk.groscale.feeregister.ui.components.FeeStatus
+import pk.groscale.feeregister.ui.components.Motion
 import pk.groscale.feeregister.ui.components.PrimaryButton
 import pk.groscale.feeregister.ui.components.ReceivePaymentDialog
 import pk.groscale.feeregister.ui.components.SecondaryButton
@@ -48,6 +52,7 @@ import pk.groscale.feeregister.ui.components.StudentDueRow
 import pk.groscale.feeregister.ui.components.throttledClickable
 import pk.groscale.feeregister.ui.theme.HeaderTint
 import pk.groscale.feeregister.ui.theme.Ink200
+import pk.groscale.feeregister.ui.theme.LocalStatusColors
 import pk.groscale.feeregister.ui.theme.Money
 import pk.groscale.feeregister.ui.theme.Radius
 import pk.groscale.feeregister.ui.theme.Space
@@ -112,6 +117,7 @@ fun HomeScreen(
         AlertDialog(
             onDismissRequest = { if (sharing == null) receiptOffer = null },
             containerColor = MaterialTheme.colorScheme.surface,
+            icon = { DrawnTick(color = LocalStatusColors.current.paid) },
             title = { Text("Payment saved", style = MaterialTheme.typography.titleMedium) },
             text = {
                 Text(
@@ -289,7 +295,14 @@ private fun Header(state: HomeUiState, onPrevious: () -> Unit, onNext: () -> Uni
             color = MaterialTheme.colorScheme.onSurfaceVariant,
             modifier = Modifier.padding(top = Space.lg),
         )
-        Text(formatRs(state.pending), style = Money.hero, color = Teal700)
+        // Counts to the new figure after a payment or a month change, so the
+        // teacher sees the amount move rather than a number silently swapped.
+        val pendingShown by animateIntAsState(
+            targetValue = state.pending,
+            animationSpec = tween(Motion.LONG, easing = Motion.Easing),
+            label = "pending",
+        )
+        Text(formatRs(pendingShown), style = Money.hero, color = Teal700)
         Text(
             if (state.pendingStudents == 1) "from 1 student" else "from ${state.pendingStudents} students",
             style = MaterialTheme.typography.labelLarge,

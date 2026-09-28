@@ -1,6 +1,7 @@
 package pk.groscale.feeregister
 
 import android.os.Bundle
+import android.os.SystemClock
 import androidx.activity.ComponentActivity
 import androidx.activity.SystemBarStyle
 import androidx.activity.compose.setContent
@@ -17,7 +18,21 @@ import pk.groscale.feeregister.ui.theme.TutorLinkTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
-        installSplashScreen()
+        // A short fade rather than the system's cut. The splash ground is the same
+        // tint as the home header, so the splash melts into the app. It waits for
+        // the quill's dip to finish (at most its 800ms) - the app is usually ready
+        // sooner, and cutting the gesture halfway looks like a glitch. Below API 31
+        // there is no icon animation and the remaining time is zero.
+        installSplashScreen().setOnExitAnimationListener { splash ->
+            val iconEndsAt = splash.iconAnimationStartMillis + splash.iconAnimationDurationMillis
+            val wait = (iconEndsAt - SystemClock.uptimeMillis()).coerceIn(0L, 800L)
+            splash.view.animate()
+                .alpha(0f)
+                .setStartDelay(wait)
+                .setDuration(220L)
+                .withEndAction { splash.remove() }
+                .start()
+        }
         super.onCreate(savedInstanceState)
 
         // The pale header runs behind the status bar on purpose; HomeScreen pads

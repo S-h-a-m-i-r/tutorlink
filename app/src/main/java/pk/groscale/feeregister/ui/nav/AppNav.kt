@@ -1,5 +1,9 @@
 package pk.groscale.feeregister.ui.nav
 
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.scaleIn
 import android.widget.Toast
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -42,6 +46,7 @@ import pk.groscale.feeregister.data.prefs.Profile
 import pk.groscale.feeregister.domain.Settlement
 import pk.groscale.feeregister.ui.attendance.AttendanceScreen
 import pk.groscale.feeregister.notify.ReminderSync
+import pk.groscale.feeregister.ui.components.Motion
 import pk.groscale.feeregister.ui.components.rememberBackupFilePicker
 import pk.groscale.feeregister.ui.home.HomeScreen
 import pk.groscale.feeregister.ui.home.HomeViewModel
@@ -91,10 +96,23 @@ fun AppNav(repo: FeeRepository, backups: BackupRepository) {
     Scaffold(
         bottomBar = { if (onTab) BottomBar(nav, backStack?.destination?.route) },
     ) { padding ->
+        // Material "fade through": the old screen fades out quickly, the new one
+        // fades in with a barely-there zoom. Replaces the library's 700ms
+        // cross-fade, which felt slow on every tab tap.
         NavHost(
             navController = nav,
             startDestination = start,
             modifier = Modifier.fillMaxSize().padding(bottom = padding.calculateBottomPadding()),
+            enterTransition = {
+                fadeIn(tween(Motion.SHORT, delayMillis = 60)) +
+                    scaleIn(tween(Motion.SHORT, delayMillis = 60), initialScale = 0.98f)
+            },
+            exitTransition = { fadeOut(tween(90)) },
+            popEnterTransition = {
+                fadeIn(tween(Motion.SHORT, delayMillis = 60)) +
+                    scaleIn(tween(Motion.SHORT, delayMillis = 60), initialScale = 0.98f)
+            },
+            popExitTransition = { fadeOut(tween(90)) },
         ) {
             composable(Route.WELCOME) {
                 // Restoring here needs no "replace everything?" warning: this

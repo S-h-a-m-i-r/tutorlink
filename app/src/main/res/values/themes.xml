@@ -18,6 +18,8 @@
     <style name="Theme.TutorLink.Splash" parent="Theme.SplashScreen">
         <item name="windowSplashScreenBackground">@color/header_tint</item>
         <item name="windowSplashScreenAnimatedIcon">@drawable/ic_splash</item>
+        <!-- The quill's dip in ic_splash.xml; API 31+ only, ignored below. -->
+        <item name="windowSplashScreenAnimationDuration">800</item>
         <item name="postSplashScreenTheme">@style/Theme.TutorLink</item>
         <item name="android:statusBarColor">#EAF3F5</item>
         <item name="android:windowLightStatusBar">true</item>
