@@ -136,7 +136,7 @@ object ReceiptRenderer {
             c.drawText(d.teacherPhone, PAD, footY, paint(28f, regular, inkSoft))
         }
         // Ours is the footnote - and the only distribution channel this app has.
-        c.drawText("TutorLink · Fee Register", W - PAD, footY, paint(26f, regular, inkFaint, Paint.Align.RIGHT))
+        c.drawText("Inkpot · Teacher's Diary", W - PAD, footY, paint(26f, regular, inkFaint, Paint.Align.RIGHT))
 
         val dir = File(context.cacheDir, "receipts").apply { mkdirs() }
         // One file per receipt number: re-sharing overwrites rather than piling up.

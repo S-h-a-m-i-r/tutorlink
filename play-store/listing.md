@@ -5,7 +5,7 @@ Play Console → Grow users → Store presence → **Main store listing**.
 ## App name (30 characters max)
 
 ```
-TutorLink: Tuition Fee Tracker
+Inkpot: Teacher's Diary
 ```
 
 ## Short description (80 characters max)
@@ -17,7 +17,7 @@ Know who has paid. Track tuition fees, part payments and attendance offline.
 ## Full description (4000 characters max)
 
 ```
-TutorLink is a simple fee register for home tuition teachers. Add your batches and students once, and every month the app works out who owes what — so you always know who has paid, who paid half, and who is behind.
+Inkpot is a simple diary for home tuition teachers: your fee register, attendance and parent reminders in one place. Add your batches and students once, and every month the app works out who owes what — so you always know who has paid, who paid half, and who is behind.
 
 No signup. No internet needed. Your register stays on your phone.
 
@@ -52,7 +52,7 @@ Save your whole register to a file, and restore it on a new phone.
 
 PRIVATE BY DESIGN
 
-TutorLink has no account and no server. It does not use the internet, show ads or track you. Your students' details never leave your phone unless you share a receipt, send a WhatsApp message or export a backup yourself.
+Inkpot has no account and no server. It does not use the internet, show ads or track you. Your students' details never leave your phone unless you share a receipt, send a WhatsApp message or export a backup yourself.
 
 WHO IT IS FOR
 

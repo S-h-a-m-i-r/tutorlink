@@ -278,7 +278,7 @@ private fun SectionTitle(text: String) {
 
 private fun defaultBackupName(): String {
     val stamp = DateTimeFormatter.ofPattern("yyyy-MM-dd").format(java.time.LocalDate.now())
-    return "tutorlink-backup-$stamp.json"
+    return "inkpot-backup-$stamp.json"
 }
 
 private fun lastBackupLine(atMillis: Long): String =

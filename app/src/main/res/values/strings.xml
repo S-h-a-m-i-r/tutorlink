@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- The display name is provisional and will change. It lives ONLY here. -->
-    <string name="app_name">TutorLink</string>
-    <string name="app_tagline">Fee Register</string>
+    <!-- The display name (TutorLink until 29 Sep 2026). The receipt footer in util/ReceiptRenderer.kt repeats it. -->
+    <string name="app_name">Inkpot</string>
+    <string name="app_tagline">Teacher\'s Diary</string>
 </resources>

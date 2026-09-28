@@ -115,7 +115,7 @@ class SettingsViewModel(
                         is BackupCodec.IncompatibleBackup ->
                             "That backup was made by a newer version of the app. Update first."
                         is org.json.JSONException ->
-                            "That file is not a TutorLink backup."
+                            "That file is not an Inkpot backup."
                         else -> e.userMessage("Could not restore that file. Nothing was changed.")
                     }
                     _events.tryEmit(SettingsEvent.Message(msg))

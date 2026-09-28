@@ -1,4 +1,9 @@
-# TutorLink — fee register for home tuition teachers
+# Inkpot — the teacher's diary for home tuition
+
+Published as **Inkpot: Teacher's Diary** by Downforce Labs. It was called TutorLink
+until 29 Sep 2026; that name is taken on Play. Internal names (`TutorLinkApp`,
+`TutorLinkTheme`, `tutorlink.db`, this folder, the repo) keep the old name on purpose:
+renaming them buys nothing and `tutorlink.db` must never change.
 
 Android, Kotlin + Jetpack Compose, entirely local (Room + DataStore). No server,
 no accounts, no runtime permissions.

@@ -1,4 +1,4 @@
-# Publishing TutorLink on Google Play — step by step
+# Publishing Inkpot on Google Play — step by step
 
 Written 29 Sep 2026. Replaces the lost `teacherPD/play-store-policy.md`.
 Everything in this folder is ready to upload; the steps below are the ones only
@@ -100,7 +100,7 @@ Play Console → **Create app**:
 
 | Field | Value |
 |---|---|
-| App name | `TutorLink: Tuition Fee Tracker` |
+| App name | `Inkpot: Teacher's Diary` |
 | Default language | English (United States) |
 | App or game | App |
 | Free or paid | **Free** (cannot be changed to paid later) |

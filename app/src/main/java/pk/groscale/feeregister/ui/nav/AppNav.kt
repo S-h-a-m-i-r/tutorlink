@@ -115,7 +115,7 @@ fun AppNav(repo: FeeRepository, backups: BackupRepository) {
                             .onFailure {
                                 Toast.makeText(
                                     context,
-                                    "That file is not a TutorLink backup. Nothing was changed.",
+                                    "That file is not an Inkpot backup. Nothing was changed.",
                                     Toast.LENGTH_LONG,
                                 ).show()
                             }
