@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths>
+    <!-- Receipts and backup files are written to the cache and shared out by URI,
+         so the app needs no storage permission at all. -->
+    <cache-path name="receipts" path="receipts/" />
+    <cache-path name="backups" path="backups/" />
+</paths>

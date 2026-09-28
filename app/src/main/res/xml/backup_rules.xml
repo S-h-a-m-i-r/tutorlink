@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  INERT while allowBackup="false" in the manifest. Kept, not deleted, so that
+  turning automatic backup back on is a one-attribute change with the scope
+  already decided rather than a rule set to rewrite under pressure.
+
+  Android Auto Backup on API 26-30. The API 31+ equivalent is
+  data_extraction_rules.xml, and the two must say the same thing.
+
+  Named explicitly rather than left as fullBackupContent="true", so what leaves
+  the phone is a list somebody can read in review rather than "everything". Only
+  the register and the teacher's settings go; rendered receipts live in cacheDir
+  and are excluded by the platform anyway.
+
+  This is a deliberate feature - "backup is the account", onboarding-and-auth.md
+  - but it does mean the register reaches the teacher's own Google Drive, and the
+  privacy policy has to say so. See play-store-policy.md section 2.
+-->
+<full-backup-content>
+    <include domain="database" path="." />
+    <include domain="sharedpref" path="." />
+</full-backup-content>

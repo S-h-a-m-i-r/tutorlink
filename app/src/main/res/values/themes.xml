@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Light only in v1. See design.md section 2. -->
+    <style name="Theme.TutorLink" parent="android:Theme.Material.Light.NoActionBar">
+        <!-- Matches HeaderTint so there is no seam above the header. -->
+        <item name="android:statusBarColor">#EAF3F5</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:navigationBarColor">#FFFFFF</item>
+        <item name="android:windowLightNavigationBar">true</item>
+        <item name="android:windowBackground">@color/header_tint</item>
+    </style>
+
+    <!--
+      The splash sits on the SAME tint as the home screen header, so launching
+      the app is one continuous surface rather than a grey flash followed by a
+      different colour. The mark keeps its teal circle, matching the launcher.
+    -->
+    <style name="Theme.TutorLink.Splash" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/header_tint</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_splash</item>
+        <item name="postSplashScreenTheme">@style/Theme.TutorLink</item>
+        <item name="android:statusBarColor">#EAF3F5</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+</resources>

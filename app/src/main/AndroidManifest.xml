@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--
+      Zero runtime permissions by design. See play-store-policy.md:
+        - parent's number  -> system contact picker (ACTION_PICK), no permission
+        - backup file      -> Storage Access Framework, no permission
+        - WhatsApp check   -> targeted <queries> below, not QUERY_ALL_PACKAGES
+    -->
+    <queries>
+        <package android:name="com.whatsapp" />
+        <package android:name="com.whatsapp.w4b" />
+    </queries>
+
+    <!--
+      The only two the app declares, both sanctioned by play-store-policy.md:
+
+        POST_NOTIFICATIONS   (Android 13+) runtime, no declaration form. Asked for
+                             at the moment the teacher switches a reminder on -
+                             never at first launch. Reminders ship OFF.
+        RECEIVE_BOOT_COMPLETED  normal, no prompt, no form. Alarms do not survive
+                             a restart, and a reminder that quietly stops after
+                             the first reboot is worse than no reminder.
+
+      Deliberately NOT declared: SCHEDULE_EXACT_ALARM / USE_EXACT_ALARM. Those
+      need a declaration form and are a common rejection. Reminders use inexact
+      alarms, which is all a class bell or a fee day needs.
+    -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
+    <application
+        android:name=".TutorLinkApp"
+        android:allowBackup="false"
+        android:fullBackupContent="@xml/backup_rules"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="false"
+        android:theme="@style/Theme.TutorLink">
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize"
+            android:theme="@style/Theme.TutorLink.Splash">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!--
+          Posts the reminders. Unexported and filter-less: only this app's own
+          alarm PendingIntents can reach it, so no other app can make a
+          teacher's phone claim a fee is due.
+        -->
+        <receiver
+            android:name=".notify.ReminderReceiver"
+            android:exported="false" />
+
+        <!--
+          Exported only because the system delivers BOOT_COMPLETED from its own
+          uid. Both actions are protected broadcasts that only the system can
+          send, and all this receiver does is book the alarms again.
+        -->
+        <receiver
+            android:name=".notify.BootReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+            </intent-filter>
+        </receiver>
+
+        <!--
+          Receipts and backups leave the app as content:// URIs with a temporary
+          read grant. This is why the app needs no storage permission - see
+          play-store-policy.md.
+        -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.files"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+    </application>
+</manifest>

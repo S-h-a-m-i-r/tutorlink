@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!--
+      Rising bars: collection going up. Name-independent, so it survives the
+      rename, and it holds together at 48px.
+
+      Adaptive icons are masked to a ~72dp circle inside a 108dp canvas, so all
+      content sits inside 21..87 and within 36 of the centre (54,54). These bars
+      span x 25..83 and y 31..77.
+
+      Each bar is one line with strokeWidth 12 and a round cap - a stadium shape
+      for a fraction of the path data of a rounded rect.
+    -->
+    <path
+        android:pathData="M31,65 L31,71"
+        android:strokeColor="#FFFFFF"
+        android:strokeAlpha="0.55"
+        android:strokeWidth="12"
+        android:strokeLineCap="round" />
+    <path
+        android:pathData="M54,53 L54,71"
+        android:strokeColor="#FFFFFF"
+        android:strokeAlpha="0.78"
+        android:strokeWidth="12"
+        android:strokeLineCap="round" />
+    <path
+        android:pathData="M77,37 L77,71"
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="12"
+        android:strokeLineCap="round" />
+</vector>

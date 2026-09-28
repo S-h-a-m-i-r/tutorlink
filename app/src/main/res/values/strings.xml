@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- The display name is provisional and will change. It lives ONLY here. -->
+    <string name="app_name">TutorLink</string>
+    <string name="app_tagline">Fee Register</string>
+</resources>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Only what the platform needs outside Compose. The palette lives in
+         ui/theme/Color.kt. -->
+    <color name="brand_teal">#2C7383</color>
+    <color name="header_tint">#EAF3F5</color>
+    <color name="screen_ground">#F7F9FA</color>
+</resources>
