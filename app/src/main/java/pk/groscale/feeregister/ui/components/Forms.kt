@@ -21,6 +21,7 @@ import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import pk.groscale.feeregister.ui.theme.Ink100
+import pk.groscale.feeregister.ui.theme.Ink400
 import pk.groscale.feeregister.ui.theme.Radius
 import pk.groscale.feeregister.ui.theme.Space
 import pk.groscale.feeregister.ui.theme.TapTarget
@@ -52,8 +53,11 @@ fun AppTextField(
             modifier = Modifier
                 .fillMaxWidth()
                 .then(if (focusRequester != null) Modifier.focusRequester(focusRequester) else Modifier),
+            // Ink400, the palette's placeholder-only grey. In caption grey, examples
+            // like "Ahmed Raza" read as data already entered, and teachers skipped
+            // the field.
             placeholder = placeholder?.let {
-                { Text(it, style = MaterialTheme.typography.bodyLarge, color = MaterialTheme.colorScheme.onSurfaceVariant) }
+                { Text(it, style = MaterialTheme.typography.bodyLarge, color = Ink400) }
             },
             textStyle = MaterialTheme.typography.bodyLarge,
             singleLine = true,
