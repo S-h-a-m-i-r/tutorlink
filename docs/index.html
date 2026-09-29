@@ -3,9 +3,57 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Inkpot – The teacher's diary for home tuition</title>
-<meta name="description" content="Inkpot keeps your tuition fees, part payments and attendance on your phone. WhatsApp reminders and receipts. No signup, no internet needed.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 108 108'%3E%3Crect width='108' height='108' rx='24' fill='%232C7383'/%3E%3Cg stroke='%23fff' stroke-width='12' stroke-linecap='round'%3E%3Cpath d='M31 65v6' stroke-opacity='.55'/%3E%3Cpath d='M54 53v18' stroke-opacity='.78'/%3E%3Cpath d='M77 37v34'/%3E%3C/g%3E%3C/svg%3E">
+<title>Inkpot: Teacher's Diary – tuition fee register &amp; attendance</title>
+<meta name="description" content="Inkpot is a tuition fee register and attendance app for home tuition teachers. Part payments, receipts and Roman Urdu WhatsApp reminders. Works offline.">
+<link rel="canonical" href="https://s-h-a-m-i-r.github.io/tutorlink/">
+<meta name="theme-color" content="#2C7383">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Inkpot">
+<meta property="og:title" content="Inkpot: Teacher's Diary – know who has paid">
+<meta property="og:description" content="A tuition fee register, attendance and parent reminders for home tuition teachers. No signup, no internet needed; your data stays on your phone.">
+<meta property="og:url" content="https://s-h-a-m-i-r.github.io/tutorlink/">
+<meta property="og:image" content="https://s-h-a-m-i-r.github.io/tutorlink/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Inkpot: Teacher's Diary">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Inkpot: Teacher's Diary – know who has paid">
+<meta name="twitter:description" content="A tuition fee register, attendance and parent reminders for home tuition teachers. Works offline; your data stays on your phone.">
+<meta name="twitter:image" content="https://s-h-a-m-i-r.github.io/tutorlink/og.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Inkpot",
+  "alternateName": "Inkpot: Teacher's Diary",
+  "description": "A tuition fee register, attendance register and parent reminders for home tuition teachers. Monthly bills, part and advance payments, receipt images, and Roman Urdu reminders sent through WhatsApp by the teacher. No account, no internet permission; data stays on the phone.",
+  "url": "https://s-h-a-m-i-r.github.io/tutorlink/",
+  "image": "https://s-h-a-m-i-r.github.io/tutorlink/og.png",
+  "operatingSystem": "Android",
+  "applicationCategory": "EducationalApplication",
+  "inLanguage": "en",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "PKR"
+  },
+  "author": {
+    "@type": "Organization",
+    "name": "Downforce Labs",
+    "email": "shamiriqbal.bis@gmail.com"
+  },
+  "featureList": [
+    "Monthly bills made automatically",
+    "Full, part and advance payments with arrears carried forward",
+    "Mid-month joining with three priced billing choices",
+    "Receipt images shared through the Android share sheet",
+    "Roman Urdu fee reminders opened in WhatsApp, one parent at a time",
+    "Attendance by tapping only absent students",
+    "Backup to a file and restore on a new phone"
+  ]
+}
+</script>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 108 108'%3E%3Crect width='108' height='108' rx='24' fill='%232C7383'/%3E%3Cpath fill='%23fff' d='M53,48 Q51.5,30 70,25 Q69.5,42.5 53,48 Z'/%3E%3Cpath d='M55.5,45 L68.5,27.5' stroke='%232C7383' stroke-width='1.8' stroke-linecap='round'/%3E%3Cpath fill='%23fff' d='M44.5,44 H63.5 A2.5,2.5 0 0 1 66,46.5 V50 H62 V54 H66 A10,10 0 0 1 76,64 V70 A10,10 0 0 1 66,80 H42 A10,10 0 0 1 32,70 V64 A10,10 0 0 1 42,54 H46 V50 H42 V46.5 A2.5,2.5 0 0 1 44.5,44 Z'/%3E%3C/svg%3E">
 <style>
   :root { --ink: #16242a; --muted: #4c5f66; --accent: #2C7383; --ground: #ffffff;
           --tint: #EAF3F5; --rule: #e3eaec; }
@@ -39,15 +87,15 @@
 <body>
 <header class="hero">
   <div class="wrap">
-    <svg viewBox="21 21 66 66" aria-hidden="true">
-      <g stroke="#fff" stroke-width="12" stroke-linecap="round" fill="none">
-        <path d="M31 65v6" stroke-opacity=".55"/><path d="M54 53v18" stroke-opacity=".78"/><path d="M77 37v34"/>
-      </g>
+    <svg viewBox="26 21 56 62" aria-hidden="true">
+      <path fill="#fff" d="M53,48 Q51.5,30 70,25 Q69.5,42.5 53,48 Z"/>
+      <path d="M55.5,45 L68.5,27.5" stroke="#2C7383" stroke-width="1.8" stroke-linecap="round"/>
+      <path fill="#fff" d="M44.5,44 H63.5 A2.5,2.5 0 0 1 66,46.5 V50 H62 V54 H66 A10,10 0 0 1 76,64 V70 A10,10 0 0 1 66,80 H42 A10,10 0 0 1 32,70 V64 A10,10 0 0 1 42,54 H46 V50 H42 V46.5 A2.5,2.5 0 0 1 44.5,44 Z"/>
     </svg>
     <div>
       <h1>Inkpot</h1>
       <p>Know who has paid. Always.</p>
-      <p class="sub">The teacher's diary for home tuition — fees, attendance and reminders on your phone.</p>
+      <p class="sub">The teacher's diary for home tuition — your fee register, attendance and parent reminders on your phone.</p>
     </div>
   </div>
 </header>

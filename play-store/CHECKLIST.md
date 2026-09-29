@@ -131,6 +131,8 @@ No permission declaration forms are needed.
 Paste everything from `listing.md` and upload the images in this folder
 (icon, feature graphic, then screenshots 01 → 05). Fill **Store settings** the same way.
 
+ASO: upload `screenshots-captioned/` 01 → 06 (not `screenshots/`), add the optional Urdu translation from `listing-ur.md`, and follow the launch plan in `ASO.md`.
+
 ## Step 7 — Closed test (Personal accounts only)
 
 1. **Testing → Closed testing → Create track** (or use the default "Alpha").
