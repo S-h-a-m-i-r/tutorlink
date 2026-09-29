@@ -8,10 +8,10 @@ Lengths were checked with a script on 29 Sep 2026 (see `ASO.md`, "Length check")
 
 ## App name (30 characters max)
 
-23 / 30
+29 / 30
 
 ```
-Inkpot: Teacher's Diary
+Inkpot: Tuition Teacher Diary
 ```
 
 ## Short description (80 characters max)

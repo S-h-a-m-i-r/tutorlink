@@ -121,20 +121,18 @@ advance payments, mid-month joining), and the only Urdu listing in the niche.
 
 ## 4. Decisions and rationale
 
-### Title — kept: `Inkpot: Teacher's Diary` (23)
+### Title — `Inkpot: Tuition Teacher Diary` (29)
 
-It already covers "teacher diary", which has low competition, and keeps the
-brand broad for the later teaching platform.
-
-**One alternative, if the owner wants more search reach:**
-`Inkpot: Tuition Teacher Diary` (29 characters). It adds **"tuition"**, the
+Chosen by the owner on 29 Sep 2026, before launch, over the first choice
+`Inkpot: Teacher's Diary` (23). It keeps "teacher diary", which has low
+competition, and adds **"tuition"**, the
 head term in nearly every relevant Pakistan query ("tuition fee", "tuition app
 for teachers", "tuition teacher app", "attendance register for tuition").
 It is still not a fees-only name. The title is the most heavily weighted field,
-so this is the single biggest text change available.
-(I rejected "Inkpot: Tuition Fee Register": stronger for fee searches, but it
-boxes the brand into fees.)
-If you switch, do it before launch or once, not repeatedly.
+so this was the single biggest text change available.
+("Inkpot: Tuition Fee Register" was rejected: stronger for fee searches, but it
+boxes the brand into fees.) Don't change the title again after launch unless
+the search-terms report gives a clear reason.
 
 ### Short description (78/80)
 

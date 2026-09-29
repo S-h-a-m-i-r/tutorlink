@@ -100,7 +100,7 @@ Play Console → **Create app**:
 
 | Field | Value |
 |---|---|
-| App name | `Inkpot: Teacher's Diary` |
+| App name | `Inkpot: Tuition Teacher Diary` |
 | Default language | English (United States) |
 | App or game | App |
 | Free or paid | **Free** (cannot be changed to paid later) |
