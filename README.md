@@ -29,7 +29,7 @@ If the code disagrees with those documents, the code is wrong.
 # emulator
 ~/Library/Android/sdk/emulator/emulator -avd Pixel9_API36 &
 adb install -r app/build/outputs/apk/debug/app-debug.apk
-adb shell am start -n pk.groscale.feeregister/.MainActivity
+adb shell am start -n com.downforcelabs.inkpot/pk.groscale.feeregister.MainActivity
 ```
 
 ## What exists so far — v1 feature-complete
@@ -168,8 +168,8 @@ be backed up outside this folder.
 
 ## Notes for later
 
-- `applicationId` is `pk.groscale.feeregister` and **must never change** — the
-  display name is provisional and lives only in `strings.xml`.
+- `applicationId` is `com.downforcelabs.inkpot` and **must never change**: it is the
+  Play package name. The Kotlin packages and `namespace` stay `pk.groscale.feeregister`.
 - The launcher mark is a first pass. Brief is in `design.md` section 9.
 - IBM Plex Sans is not bundled yet; `ui/theme/Type.kt` has the TODO. The scale and
   weights are already correct, so it is a one-line swap.

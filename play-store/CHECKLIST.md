@@ -61,9 +61,8 @@ Also check:
   Chrome profiles — don't pick theirs).
 - Your card must allow **international online payments** (many Pakistani debit
   cards need this switched on in the bank app first).
-- The package name `pk.groscale.feeregister` can **never change** after the first
-  upload. Keep it only if "groscale" is yours to use; if not, change
-  `applicationId` in `app/build.gradle.kts` **before** Step 5.
+- The package name is `com.downforcelabs.inkpot` and can **never change** after the
+  first upload.
 
 ## Step 2 — Create the developer account
 

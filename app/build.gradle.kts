@@ -19,9 +19,10 @@ android {
     compileSdk = 37
 
     defaultConfig {
-        // Name-neutral on purpose: the display name will change, this cannot.
-        // See play-store-policy.md and design.md section 12.
-        applicationId = "pk.groscale.feeregister"
+        // The Play package name: permanent from the first upload on (30 Sep 2026).
+        // Kotlin packages and `namespace` keep the old pk.groscale.feeregister
+        // prefix; they are internal and need not match.
+        applicationId = "com.downforcelabs.inkpot"
         minSdk = 26
         targetSdk = 36
         // Every upload to Play Console needs a higher versionCode than the last.
